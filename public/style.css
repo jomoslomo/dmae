@@ -1,4 +1,3 @@
-/* Reset default browser styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +5,7 @@
 }
 @font-face {
   font-family: 'dubsteptrix';
-  src: url('public/fonts/DubsteptrixRegular-OK74.ttf') format('truetype');
+  src: url('/fonts/DubsteptrixRegular-OK74.ttf') format('truetype');
 }
 /* Set body styles */
 body {
@@ -19,9 +18,10 @@ body {
 h1 {
   font-size: 48px;
   font-weight: bold;
-  margin-top: 0px;
+  position: center;
+  margin-top: 20px;
   margin-bottom: 0px;
-  background-image: linear-gradient(to right, #ff0000, #12887a);
+  background-image: linear-gradient(to right, #00ff73, #1f4af9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center; /* Center the h1 element */
@@ -30,7 +30,10 @@ h1 {
 
 /* Style the link in the paragraph */
 p a {
-  color: #007bff;
+  color: #3fbe87;
+  margin-top: 200px;
+  margin-left: 30px;
+  padding: 0px
 }
 
 /* Style the link when hovered */

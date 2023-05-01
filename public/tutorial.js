@@ -1,5 +1,3 @@
-// tutorial.js 
-
 function Tutorial() {
   // Define any variables or properties needed for the tutorial component here
 }
@@ -74,7 +72,7 @@ translate(-100,0);
   //Display the text for Main Course
   textSize(24);
   fill(0);
-  text('Main Course', 50, 490);
+  text('Visualizer', 50, 490);
   textSize(12);
   text('Our main course displays interval distance in the form of musical geometry while using', 50, 530)
   text('our colors to help associate the shapes to the specific interval. This also assists in', 50, 543);
@@ -84,7 +82,7 @@ translate(-100,0);
   
   //Display the text for Lesson 1
   textSize(24);
-  text('Lesson One', 50, 631);
+  text('Main Course', 50, 631);
   textSize(12);
   text('Lesson One plays an interval to which you respond with the corresponding key.', 50, 671);
   text('Use the row "1-=" as you did in the Main Course to identify the interval', 50, 684);
