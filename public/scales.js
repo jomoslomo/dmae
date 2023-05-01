@@ -26,7 +26,9 @@ class Scales {
     
     this.mic.start();
     this.recorder.setInput(this.mic);
-
+    this.showButtons();
+  }
+showButtons(){
 
     const buttonsWrapper = document.createElement('div');
     buttonsWrapper.style.display = 'flex';
@@ -40,14 +42,14 @@ class Scales {
 
     const recordBtn = document.createElement('button');
     recordBtn.innerText = 'Record';
-    recordBtn.addEventListener('click', () => {
+    recordBtn.addEventListener('touchstart', () => {
       this.recordSample();
     });
     recordStopWrapper.appendChild(recordBtn);
 
     const stopBtn = document.createElement('button');
     stopBtn.innerText = 'Stop';
-    stopBtn.addEventListener('click', () => {
+    stopBtn.addEventListener('touchstart', () => {
       if (this.isRecording) {
         this.recordSample();
       }
@@ -57,14 +59,14 @@ class Scales {
 
     const prevScaleBtn = document.createElement('button');
     prevScaleBtn.innerText = 'Prev Scale';
-    prevScaleBtn.addEventListener('click', () => {
+    prevScaleBtn.addEventListener('touchstart', () => {
       this.currentScaleIndex = (this.currentScaleIndex - 1 + this.scales.length) % this.scales.length;
     });
     buttonsWrapper.appendChild(prevScaleBtn);
 
     const nextScaleBtn = document.createElement('button');
     nextScaleBtn.innerText = 'Next Scale';
-    nextScaleBtn.addEventListener('click', () => {
+    nextScaleBtn.addEventListener('touchstart', () => {
       this.currentScaleIndex = (this.currentScaleIndex + 1) % this.scales.length;
     });
     buttonsWrapper.appendChild(nextScaleBtn);
@@ -134,7 +136,7 @@ class Scales {
       intervalBtn.style.backgroundColor = noteColor;
       intervalBtn.style.justifyContent = 'center';
       intervalBtn.style.alignItems = 'center';
-      intervalBtn.addEventListener('click', () => {
+      intervalBtn.addEventListener('touchstart', () => {
         this.playInterval(i);
       });
       intervalBtnsWrapper.appendChild(intervalBtn);
@@ -297,7 +299,6 @@ toggleScales() {
     }
   }
   reset(){
-    
     
   }
 }
