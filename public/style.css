@@ -1,7 +1,36 @@
-html, body {
+/* Reset default browser styles */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-canvas {
-  display: block;
+
+/* Set body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Style the h1 heading */
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-image: linear-gradient(to right, #ff0000, #12887a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center; /* Center the h1 element */
+}
+
+
+/* Style the link in the paragraph */
+p a {
+  color: #007bff;
+}
+
+/* Style the link when hovered */
+p a:hover {
+  color: #0069d9;
 }

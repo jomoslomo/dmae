@@ -72,7 +72,7 @@ function drawCirclesAndLines() {
   const centerY = (height / 2);
   
 
-  const radius = 400 ;
+  const radius = windowWidth ;
 
   // Initialize the circles array
   const circles = [];
