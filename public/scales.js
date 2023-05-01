@@ -42,14 +42,14 @@ showButtons(){
 
     const recordBtn = document.createElement('button');
     recordBtn.innerText = 'Record';
-    recordBtn.addEventListener('touchstart', () => {
+    recordBtn.addEventListener('click', () => {
       this.recordSample();
     });
     recordStopWrapper.appendChild(recordBtn);
 
     const stopBtn = document.createElement('button');
     stopBtn.innerText = 'Stop';
-    stopBtn.addEventListener('touchstart', () => {
+    stopBtn.addEventListener('click', () => {
       if (this.isRecording) {
         this.recordSample();
       }
@@ -59,14 +59,14 @@ showButtons(){
 
     const prevScaleBtn = document.createElement('button');
     prevScaleBtn.innerText = 'Prev Scale';
-    prevScaleBtn.addEventListener('touchstart', () => {
+    prevScaleBtn.addEventListener('click', () => {
       this.currentScaleIndex = (this.currentScaleIndex - 1 + this.scales.length) % this.scales.length;
     });
     buttonsWrapper.appendChild(prevScaleBtn);
 
     const nextScaleBtn = document.createElement('button');
     nextScaleBtn.innerText = 'Next Scale';
-    nextScaleBtn.addEventListener('touchstart', () => {
+    nextScaleBtn.addEventListener('click', () => {
       this.currentScaleIndex = (this.currentScaleIndex + 1) % this.scales.length;
     });
     buttonsWrapper.appendChild(nextScaleBtn);
@@ -136,7 +136,7 @@ showButtons(){
       intervalBtn.style.backgroundColor = noteColor;
       intervalBtn.style.justifyContent = 'center';
       intervalBtn.style.alignItems = 'center';
-      intervalBtn.addEventListener('touchstart', () => {
+      intervalBtn.addEventListener('click', () => {
         this.playInterval(i);
       });
       intervalBtnsWrapper.appendChild(intervalBtn);
