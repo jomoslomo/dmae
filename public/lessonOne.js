@@ -212,10 +212,15 @@ selectCircle(index, circleColor) {
       // Generate a new random interval
       this.currentInterval = floor(random(this.intervalNames.length));
  setTimeout(() => {
-       this.answerFeedback = "Next Interval"
+       this.answerFeedback = "                    Next Interval             Press 'r' to play together or 'c' to play consecutively";
    this.answerFeedbackColor = color('black');
       this.playSound(this.currentInterval);
     }, 2000);
+
+
+
+
+
     } else {
       this.score--; // Decrease score if the answer is incorrect
       this.answerFeedback = "Try Again."; // Set answer feedback message

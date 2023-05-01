@@ -30,13 +30,13 @@ function setup() {
   tutorialButton.mousePressed(() => changePage('tutorial'));
 
   buttonY += 50;
-  mainCourseButton = createButton('Main Course');
+  mainCourseButton = createButton('Visualizer');
   mainCourseButton.position(buttonX, buttonY);
   mainCourseButton.size(buttonWidth, buttonHeight);
   mainCourseButton.mousePressed(() => changePage('mainCourse'));
 
   buttonY += 50;
-  lessonOneButton = createButton('Lesson One');
+  lessonOneButton = createButton('Course');
   lessonOneButton.position(buttonX, buttonY);
   lessonOneButton.size(buttonWidth, buttonHeight);
   lessonOneButton.mousePressed(() => changePage('lessonOne'));

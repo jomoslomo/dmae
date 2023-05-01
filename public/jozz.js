@@ -157,14 +157,17 @@ addEllipse() {
 
 
 
-  playSound() {
-    let ratio = getIntervalRatio(this.currentInterval);
-    userStartAudio();
+playSound() {
+  let ratio = getIntervalRatio(this.currentInterval);
+  userStartAudio();
+  this.osc2.start();
+  this.osc2.freq(440 * ratio, 0.005);
+  this.osc2.amp(0.2, 1);
+  setTimeout(() => {
     this.osc2.stop();
-    this.osc2.start();
-    this.osc2.freq(440 * ratio, 0.1);
-    this.osc2.amp(0.2, 0.1);
-  }
+  }, 750);
+}
+
    reset() {
     this.lines = [];
     this.intervalPositions = [];
