@@ -16,7 +16,7 @@ class Scales {
       { name: 'Japanese Hirajoshi', notes: [0, 2, 3, 7, 8] },
       { name: 'Indian Raga Bhairav', notes: [0, 1, 4, 5, 7, 8, 11] },
       // { name: 'Arabic Maqam Hijaz', notes: [0, 1, 4, 5, 7, 8, 11] },
-      { name: 'Spanish Gypsy', notes: [0, 1, 4, 5, 7, 8, 10] },
+      // { name: 'Spanish Gypsy', notes: [0, 1, 4, 5, 7, 8, 10] },
       { name: 'Altered Scale', notes: [0, 1, 3, 4, 6, 8, 10] },
       { name: 'Phrygian Dominant Scale', notes: [0, 1, 4, 5, 7, 8, 10] },
       { name: 'Whole Tone Scale', notes: [0, 2, 4, 6, 8, 10] },
