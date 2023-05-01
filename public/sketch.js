@@ -56,7 +56,7 @@ function setup() {
   
   // set up the home button
   homeButton = createButton('Home');
-  homeButton.position(width/10, height/7 - 5);
+  homeButton.position(width/10, height/10);
   homeButton.size(buttonWidth, buttonHeight);
   homeButton.mousePressed(() => changePage('menu'));
   

@@ -35,9 +35,10 @@ constructor() {
       color(102, 0, 255), // min 7th
       color(129, 0, 169), // maj 7th
     ];
-    this.x = width / 12;
+    this.spacing = 80;
+
+    this.x = width / 2 - (this.intervalNames.length - 1) * this.spacing / 2;
     this.y = height / 2;
-    this.spacing = 30;
     this.currentInterval = floor(random(this.intervalNames.length));
     this.score = 0;
     this.initialIntervalPlayed = false; // Add a flag to track the initial interval play
@@ -79,10 +80,10 @@ if (!this.initialIntervalPlayed) {
   this.circles.forEach((circle, index) => {
   fill(circle.color);
   if (index === this.selectedCircle) {
-    circle.size = 40; // increase the size of the selected circle
+    circle.size = 80; // increase the size of the selected circle
   } else {
     
-    circle.size = 10;
+    circle.size = 40;
   }
   ellipse(circle.x, circle.y, circle.size);
 });

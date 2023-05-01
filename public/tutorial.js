@@ -9,9 +9,9 @@ Tutorial.prototype.render = function() {
   background(255);
 // Set the font properties for the text
   textSize(24);
-  textAlign(LEFT, TOP);
+  textAlign(CENTER, TOP);
   textFont('Tahoma');
-
+  translate(width/2,0);
   // Display the title of the tutorial
   fill(0);
   text('Introduction to Intervals', 50, 50);
@@ -43,11 +43,13 @@ Tutorial.prototype.render = function() {
   text('of an interval. The specific intervals and their assigned colors are:', 50, 371);
   
   //Display the text for specific intervals
+push();
+translate(-100,0);
   textSize(15);
   fill(163, 0, 0);
-  text('Unison,', 50, 390);
+  text('Unison, ', 50, 390);
   fill(242, 0, 0);
-  text('Minor 2nd,', 105, 390);
+  text(' Minor 2nd,', 105, 390);
   fill(255, 0, 0);
   text('Major 2nd,', 180, 390);
   fill(255, 79, 0);
@@ -68,7 +70,7 @@ Tutorial.prototype.render = function() {
   text('Major 7th,', 120, 450);
   fill(97, 0, 97);
   text('Octave', 190, 450);
-  
+  pop();
   //Display the text for Main Course
   textSize(24);
   fill(0);

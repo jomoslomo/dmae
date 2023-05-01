@@ -46,7 +46,6 @@ class MainCourse {
 
   // Draw the circles and lines
   this.drawCirclesAndLines();
-
   pop();
 
   // Display the name of the selected interval
@@ -84,9 +83,22 @@ class MainCourse {
     this.selectCircle(10, color(102, 0, 255)); // min 7th
   } else if (key === "=") {
     this.selectCircle(11, color(129, 0, 169)); // maj 7th
-  }
-
+  }  
 }
+drawAllCirclesAndLines() {
+  // Draw the circles and lines on top of each other
+  for (let i = 0; i < this.circles.length; i++) {
+    const circle = this.circles[i];
+    fill(circle.color);
+    ellipse(circle.x, circle.y, circle.size);
+    stroke(circle.color);
+    for (let j = 0; j < this.circles.length; j++) {
+      const neighbor = this.circles[(j + i) % this.circles.length];
+      line(circle.x, circle.y, neighbor.x, neighbor.y);
+    }
+  }
+}
+
 drawCirclesAndLines() {
   // Draw the circles
   this.circles.forEach((circle) => {
