@@ -103,7 +103,7 @@ translate(-100,0);
   text('of specific intervals', 50, 883);
   text('Use the "R" key to begin recording, the "S" key to stop recording', 50, 896);
   text('Use the row "1-=" to play the intervals using your recording', 50, 909);
-  
+  text('To toggle through the differnt scales use the left and right arrow keys', 50, 920);
  
   
 };

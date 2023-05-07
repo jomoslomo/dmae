@@ -6,6 +6,7 @@ let jozzButton;
 let homeButton; // new button for going back to menu page
 let scalesButton; // new button for scales page
 let previousPage = null;
+let infoButton;
 
 function setup() {
   imageMode(CENTER);
@@ -59,6 +60,28 @@ function setup() {
   homeButton.position(width/10, height/10);
   homeButton.size(buttonWidth, buttonHeight);
   homeButton.mousePressed(() => changePage('menu'));
+
+  infoButton = createButton('Info');
+  infoButton.position(width/5,height/10 );
+  infoButton.size(buttonWidth, buttonHeight);
+  infoButton.mouseClicked(() => {
+    if (currentPage === 'scales') {
+      const infoText = 'To use scales:\n\n1. Press the left and right arrow keys to toggle through the available scales.\n2. Press the "1" to "=" keys to play the notes in the current scale.\n3. Press the "R" key to start recording a sample of your voice.\n4. Press the "S" key to stop recording the sample.\n5. Use the row "1-=" to play the intervals using your recording.';
+      alert(infoText);
+
+    } else if(currentPage === 'mainCourse'){
+      const infoText = 'To use Visualizer:\n\n1.  Press the "1" to "=" keys to play the differnt visualizations of each interval.';
+      alert(infoText);
+    }else if(currentPage === 'lessonOne'){
+      const infoText = 'To use Lesson One:\n\n1. Press the "1" to "=" keys to select the corresponding interval.\n2. After selecting an interval, listen to the sound played.\n3. If you think you know the interval, press the corresponding number key again to submit your answer.\n4. If your answer is correct, your score will increase by 1, and a "Good Job!" message will appear. If your answer is incorrect, your score will decrease by 1, and a "Try Again." message will appear.\n5. After submitting your answer, a new random interval will be played, and the process will repeat.\n\nControls:\n\n- Press "R" to replay the current interval.\n- Press "C" to hear the current interval played consecutively with the previous interval.\n- Use the row "1-=" to select the interval.\n- Your score is displayed in the top center of the screen.';
+      alert(infoText);
+
+    }else if(currentPage === 'jozz'){
+      const infoText = 'To use jozz:\n\n1.  Press the "1" to "=" keys to play the interval.';
+      alert(infoText);
+    }else{}
+  });
+
   
   
 }
@@ -72,6 +95,7 @@ function draw() {
     scalesButton.show(); // show the scales button on menu page
     homeButton.hide(); // hide home button on menu page
     menu.render();
+    infoButton.hide();
   } else {
     tutorialButton.hide();
     mainCourseButton.hide();
@@ -79,6 +103,8 @@ function draw() {
     jozzButton.hide();
     scalesButton.hide(); // hide the scales button on other pages
     homeButton.show(); // show home button on other pages
+    infoButton.show();
+
     if (currentPage === 'tutorial') {
       tutorial.render();
     } else if (currentPage === 'mainCourse') {

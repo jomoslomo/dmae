@@ -7,6 +7,7 @@ class Scales {
    this.soundFile = new p5.SoundFile();
    this.isRecording = false;
    this.currentScaleIndex = 0;
+  this.playbackPosition = 0;
 
    this.scales = [
      { name: 'Major Pentatonic', notes: [0, 2, 4, 7, 9] },
@@ -26,137 +27,15 @@ class Scales {
    
    this.mic.start();
    this.recorder.setInput(this.mic);
-   this.showButtons();
+
+  
+ 
  }
-showButtons(){
 
-   const buttonsWrapper = document.createElement('div');
-   buttonsWrapper.style.display = 'flex';
-   buttonsWrapper.style.flexWrap = 'wrap';
-   document.body.appendChild(buttonsWrapper);
-
-   const recordStopWrapper = document.createElement('div');
-   recordStopWrapper.style.display = 'flex';
-   recordStopWrapper.style.flexDirection = 'row';
-   buttonsWrapper.appendChild(recordStopWrapper);
-
-   const recordBtn = document.createElement('button');
-   recordBtn.innerText = 'Record';
-   recordBtn.addEventListener('touchstart', () => {
-     this.recordSample();
-   });
-   recordStopWrapper.appendChild(recordBtn);
-
-   const stopBtn = document.createElement('button');
-   stopBtn.innerText = 'Stop';
-   stopBtn.addEventListener('touchstart', () => {
-     if (this.isRecording) {
-       this.recordSample();
-     }
-   });
-   recordStopWrapper.appendChild(stopBtn);
-
-
-   const prevScaleBtn = document.createElement('button');
-   prevScaleBtn.innerText = 'Prev Scale';
-   prevScaleBtn.addEventListener('touchstart', () => {
-     this.currentScaleIndex = (this.currentScaleIndex - 1 + this.scales.length) % this.scales.length;
-   });
-   buttonsWrapper.appendChild(prevScaleBtn);
-
-   const nextScaleBtn = document.createElement('button');
-   nextScaleBtn.innerText = 'Next Scale';
-   nextScaleBtn.addEventListener('touchstart', () => {
-     this.currentScaleIndex = (this.currentScaleIndex + 1) % this.scales.length;
-   });
-   buttonsWrapper.appendChild(nextScaleBtn);
-
-   // this.scaleButtons = []; // Array to hold the scale buttons
-   // for (let i = 0; i < this.scales.length; i++) {
-   //   const scaleBtn = document.createElement('button');
-   //   scaleBtn.innerText = this.scales[i].name;
-   //   scaleBtn.addEventListener('click', () => {
-   //     this.currentScaleIndex = i;
-   //   });
-   //   buttonsWrapper.appendChild(scaleBtn);
-   //   this.scaleButtons.push(scaleBtn);
-   // }
-
-   const intervalBtnsWrapper = document.createElement('div');
-   intervalBtnsWrapper.style.display = 'flex';
-   intervalBtnsWrapper.style.justifyContent = 'center';
-   intervalBtnsWrapper.style.alignItems = 'center';
-   document.body.appendChild(intervalBtnsWrapper);
-   
-   for (let i = 0; i < 12; i++) {
-     const intervalBtn = document.createElement('button');
-     intervalBtn.innerText = i + 1;
-     const noteIndex = (i + 3) % 12;
-     let noteColor;
-     switch (noteIndex) {
-       case 0:
-         noteColor = 'rgb(163, 0, 0)'; // unison
-         break;
-       case 1:
-         noteColor = 'rgb(242, 0, 0)'; // min 2nd
-         break;
-       case 2:
-         noteColor = 'rgb(255, 0, 0)'; // maj 2nd
-         break;
-       case 3:
-         noteColor = 'rgb(255, 79, 0)'; // min 3rd
-         break;
-       case 4:
-         noteColor = 'rgb(255, 207, 0)'; // maj 3rd
-         break;
-       case 5:
-         noteColor = 'rgb(198, 255, 0)'; // perfect 4th
-         break;
-       case 6:
-         noteColor = 'rgb(94, 255, 0)'; // tritone
-         break;
-       case 7:
-         noteColor = 'rgb(0, 255, 146)'; // perfect 5th
-         break;
-       case 8:
-         noteColor = 'rgb(0, 178, 255)'; // min 6th
-         break;
-       case 9:
-         noteColor = 'rgb(0, 40, 255)'; // maj 6th
-         break;
-       case 10:
-         noteColor = 'rgb(102, 0, 255)'; // min 7th
-         break;
-       case 11:
-         noteColor = 'rgb(129, 0, 169)'; // maj 7th
-         break;
-       default:
-         noteColor = 'rgb(0, 0, 0)';
-     }
-     intervalBtn.style.backgroundColor = noteColor;
-     intervalBtn.style.justifyContent = 'center';
-     intervalBtn.style.alignItems = 'center';
-     intervalBtn.addEventListener('touchstart', () => {
-       this.playInterval(i);
-     });
-     intervalBtnsWrapper.appendChild(intervalBtn);
-   }
-   
-
-   const buttons = document.querySelectorAll('button');
-
-buttons.forEach(button => {
- buttonsWrapper.style.display = 'flex';
-buttonsWrapper.style.justifyContent = 'center';
-buttonsWrapper.style.alignItems = 'center';
- button.style.fontSize = '16px';
- button.style.padding = '10px';
-});
-
- }
  
 
 render() {
+ 
  background(255);
  textSize(20);
  textAlign(CENTER);
@@ -222,7 +101,7 @@ render() {
    }
  
  }
- pop(); // Restore the previous transformation matrix
+
 }
 
 
@@ -262,8 +141,22 @@ render() {
      if (this.currentScaleIndex >= this.scales.length) {
        this.currentScaleIndex = 0;
      }
-   }
- }
+   }else if (keyIsDown(UP_ARROW)) { // Added UP_ARROW functionality
+    this.octaveShift(1); // Increase octave
+  } else if (keyIsDown(DOWN_ARROW)) { // Added DOWN_ARROW functionality
+    this.octaveShift(-1); // Decrease octave
+  }
+}
+
+// New method for octave shifting
+octaveShift(shift) {
+  for (let scale of this.scales) {
+    for (let i = 0; i < scale.notes.length; i++) {
+      scale.notes[i] += shift * 12;
+    }
+  }
+}
+ 
 
 toggleScales() {
    this.currentScaleIndex = (this.currentScaleIndex + 1) % this.scales.length;
@@ -302,3 +195,4 @@ toggleScales() {
    
  }
 }
+
