@@ -8,6 +8,7 @@ class Scales {
    this.isRecording = false;
    this.currentScaleIndex = 0;
   this.playbackPosition = 0;
+  this.playingInterval = null;
 
    this.scales = [
      { name: 'Major Pentatonic', notes: [0, 2, 4, 7, 9] },
@@ -92,13 +93,18 @@ render() {
        default:
          noteColor = color(0);
      }
-   if (scaleNotes.includes(noteIndex)) {
-     fill(noteColor);
-     ellipse(cos(angle) * radius, sin(angle) * radius, ellipseSize, ellipseSize);
-   } else {
-     fill(0);
-     ellipse(cos(angle) * radius, sin(angle) * radius, ellipseSize/2, ellipseSize/2);
-   }
+     if (scaleNotes.includes(noteIndex)) {
+      fill(noteColor);
+      // Check if the current note index is the playing interval
+      if (noteIndex === this.playingInterval) {
+        ellipse(cos(angle) * radius, sin(angle) * radius, ellipseSize * 4, ellipseSize * 4); // Increase the ellipse size
+      } else {
+        ellipse(cos(angle) * radius, sin(angle) * radius, ellipseSize, ellipseSize);
+      }
+    } else {
+      fill(0);
+      ellipse(cos(angle) * radius, sin(angle) * radius, ellipseSize / 2, ellipseSize / 2);
+    }
  
  }
 
@@ -173,6 +179,10 @@ toggleScales() {
      const rate = Math.pow(2, intervalNote/12); // Calculate playback rate of the interval
      this.soundFile.rate(rate); // Set the playback rate to the calculated rate
      this.soundFile.play();
+     this.playingInterval = this.scales[this.currentScaleIndex].notes[interval]; // Set the playing interval
+     this.soundFile.onended(() => {
+       this.playingInterval = null; // Reset the playing interval when the sound stops playing
+     });
    } else {
      console.error('No recorded sample available.');
    }
@@ -191,8 +201,8 @@ toggleScales() {
      this.isRecording = true;
    }
  }
- reset(){
-   
- }
-}
+ reset() {
+  this.recordedSampleBuffer = null;
 
+}
+}
